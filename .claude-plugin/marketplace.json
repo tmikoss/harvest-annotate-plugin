@@ -1,0 +1,13 @@
+{
+  "name": "harvest-annotate",
+  "owner": {
+    "name": "tmikoss"
+  },
+  "plugins": [
+    {
+      "name": "harvest-annotate",
+      "source": ".",
+      "description": "Annotate Harvest time entries with Jira task numbers based on git commits and Claude conversation history"
+    }
+  ]
+}
