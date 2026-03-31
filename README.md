@@ -37,19 +37,12 @@ Add the Atlassian remote MCP server to your global Claude Code settings (`~/.cla
 
 You will be prompted to authenticate with your Atlassian account on first use.
 
-### 2. Install the plugin globally
+### 2. Install the plugin via Claude Code marketplace
 
-Add the plugin to your global Claude Code settings (`~/.claude/settings.json`):
-
-```json
-{
-  "plugins": [
-    "/absolute/path/to/harvest-annotate-plugin"
-  ]
-}
-```
-
-Replace the path with the actual location where you cloned this repository.
+1. Run `/plugin` in Claude Code
+2. Go to the **Marketplaces** tab
+3. Select **Add Marketplace** and enter `tmikoss/harvest-annotate-plugin`
+4. Follow the prompts to install
 
 ### 3. Configure Harvest credentials
 
