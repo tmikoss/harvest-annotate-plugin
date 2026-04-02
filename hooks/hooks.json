@@ -1,14 +1,3 @@
 {
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "mkdir -p ${CLAUDE_PLUGIN_DATA}; test -f ${CLAUDE_PLUGIN_DATA}/auth.json || echo '{\"access_token\": \"...\", \"account_id\": \"...\"}' > ${CLAUDE_PLUGIN_DATA}/auth.json; test -f ${CLAUDE_PLUGIN_DATA}/repos.json || echo '{}' > ${CLAUDE_PLUGIN_DATA}/repos.json"
-          }
-        ]
-      }
-    ]
-  }
+  "hooks": {}
 }

@@ -28,7 +28,17 @@ func loadAuth() (*AuthConfig, error) {
 	path := authFilePath()
 	data, err := os.ReadFile(path)
 	if err != nil {
-		return nil, fmt.Errorf("no auth config found at %s", path)
+		if os.IsNotExist(err) {
+			placeholder := []byte(`{"access_token": "...", "account_id": "..."}`)
+			if mkErr := os.MkdirAll(filepath.Dir(path), 0700); mkErr != nil {
+				return nil, fmt.Errorf("cannot create directory for %s: %w", path, mkErr)
+			}
+			if wErr := os.WriteFile(path, placeholder, 0600); wErr != nil {
+				return nil, fmt.Errorf("cannot create placeholder auth config at %s: %w", path, wErr)
+			}
+			return nil, fmt.Errorf("auth not configured — edit %s with your Harvest credentials", path)
+		}
+		return nil, fmt.Errorf("cannot read auth config at %s: %w", path, err)
 	}
 	var cfg AuthConfig
 	if err := json.Unmarshal(data, &cfg); err != nil {
